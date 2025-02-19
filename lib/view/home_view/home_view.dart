@@ -59,24 +59,109 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
             Container(
-                width: MediaQuery.sizeOf(context).width,
-                height: 220,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(5, 10),
-                          blurRadius: 20,
-                          color: AppColor.gradientSecond.withOpacity(0.3)),
-                    ],
-                    gradient: LinearGradient(colors: [
-                      AppColor.gradientFirst.withOpacity(0.8),
-                      AppColor.gradientSecond.withOpacity(0.9),
-                    ], begin: Alignment.bottomLeft, end: Alignment.centerRight),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(80),
-                        topLeft: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10))))
+              width: MediaQuery.sizeOf(context).width,
+              height: 220,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(5, 10),
+                        blurRadius: 20,
+                        color: AppColor.gradientSecond.withOpacity(0.3)),
+                  ],
+                  gradient: LinearGradient(colors: [
+                    AppColor.gradientFirst.withOpacity(0.8),
+                    AppColor.gradientSecond.withOpacity(0.9),
+                  ], begin: Alignment.bottomLeft, end: Alignment.centerRight),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(80),
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10))),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 3,
+                    children: [
+                      Text("Next workout",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: AppColor.homeViewContainerTextSmall)),
+                      Text("Legs Toning",
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: AppColor.homeViewContainerTextSmall,
+                              fontWeight: FontWeight.w600)),
+                      Text("and Glutes Workout",
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: AppColor.homeViewContainerTextSmall)),
+                      Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.timer_outlined,
+                                  color: AppColor.homeViewContainerTextSmall,
+                                  size: 20),
+                              SizedBox(width: 10),
+                              Text("60 min",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color:
+                                          AppColor.homeViewContainerTextSmall)),
+                            ],
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(60),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: AppColor.gradientFirst,
+                                      blurRadius: 10,
+                                      offset: Offset(4, 8))
+                                ]),
+                            child: Icon(Icons.play_circle_fill,
+                                color: AppColor.homeViewContainerTextSmall,
+                                size: 60),
+                          )
+                        ],
+                      )
+                    ]),
+              ),
+            ),
+            Container(
+              height: 180,
+              // color: Colors.red,
+              width: MediaQuery.sizeOf(context).width,
+              child: Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.sizeOf(context).width,
+                    margin: EdgeInsets.only(top: 30),
+                    height: 120,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 40,
+                              offset: Offset(8, 10),
+                              color: AppColor.gradientSecond.withOpacity(0.3)),
+                          BoxShadow(
+                              blurRadius: 10,
+                              offset: Offset(-1, -5),
+                              color: AppColor.gradientSecond.withOpacity(0.3))
+                        ],
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/card.jpg"),
+                            fit: BoxFit.fill)),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
