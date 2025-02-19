@@ -158,10 +158,45 @@ class _HomeViewState extends State<HomeView> {
                         image: DecorationImage(
                             image: AssetImage("assets/images/card.jpg"),
                             fit: BoxFit.fill)),
+                  ),
+                  Container(
+                    height: 200,
+                    width: MediaQuery.sizeOf(context).width,
+                    margin: EdgeInsets.only(right: 200, bottom: 30),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/figure.png"))),
+                  ),
+                  Container(
+                    height: 100,
+                    width: double.maxFinite,
+                    margin: EdgeInsets.only(left: 150, top: 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 4,
+                      children: [
+                        Text("You are doing well",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: AppColor.homeViewDetail,
+                                fontWeight: FontWeight.bold)),
+                        RichText(
+                            text: TextSpan(
+                                text: "Keep it up\n",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColor.homeViewPlanColor,
+                                ),
+                                children: [
+                              TextSpan(text: "stick to your plan")
+                            ]))
+                      ],
+                    ),
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
