@@ -16,26 +16,46 @@ class _HomeViewState extends State<HomeView> {
       body: Container(
         padding: EdgeInsets.only(top: 70, left: 30, right: 30),
         child: Column(
+          spacing: 20,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Training",
                     style: TextStyle(
                         fontSize: 30,
                         color: AppColor.homeViewTitle,
                         fontWeight: FontWeight.w700)),
-                Row(
-                  spacing: 10,
-                  children: [
-                    Icon(Icons.arrow_back_ios,
-                        size: 20, color: AppColor.homeViewIcons),
-                    Icon(Icons.calendar_today_outlined,
-                        size: 20, color: AppColor.homeViewIcons),
-                    Icon(Icons.arrow_forward_ios,
-                        size: 20, color: AppColor.homeViewIcons),
-                  ],
-                )
+                Spacer(),
+                Icon(Icons.arrow_back_ios,
+                    size: 20, color: AppColor.homeViewIcons),
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(Icons.calendar_today_outlined,
+                    size: 20, color: AppColor.homeViewIcons),
+                SizedBox(
+                  width: 15,
+                ),
+                Icon(Icons.arrow_forward_ios,
+                    size: 20, color: AppColor.homeViewIcons)
+              ],
+            ),
+            Row(
+              children: [
+                Text("Your program",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: AppColor.homeViewSubtitle,
+                        fontWeight: FontWeight.w700)),
+                Spacer(),
+                Text("Details",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: AppColor.homeViewDetail,
+                        fontWeight: FontWeight.w700)),
+                SizedBox(width: 8),
+                Icon(Icons.arrow_forward,
+                    size: 20, color: AppColor.homeViewIcons)
               ],
             )
           ],
