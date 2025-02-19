@@ -57,7 +57,26 @@ class _HomeViewState extends State<HomeView> {
                 Icon(Icons.arrow_forward,
                     size: 20, color: AppColor.homeViewIcons)
               ],
-            )
+            ),
+            Container(
+                width: MediaQuery.sizeOf(context).width,
+                height: 220,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(5, 10),
+                          blurRadius: 20,
+                          color: AppColor.gradientSecond.withOpacity(0.3)),
+                    ],
+                    gradient: LinearGradient(colors: [
+                      AppColor.gradientFirst.withOpacity(0.8),
+                      AppColor.gradientSecond.withOpacity(0.9),
+                    ], begin: Alignment.bottomLeft, end: Alignment.centerRight),
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(80),
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))))
           ],
         ),
       ),
