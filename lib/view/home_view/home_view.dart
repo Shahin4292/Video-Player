@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/res/color/colors.dart';
 
@@ -9,6 +11,20 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  List info = [];
+
+  _initData() {
+    DefaultAssetBundle.of(context).loadString("json/info.json").then((value) {
+      info = json.decode(value);
+    });
+  }
+
+  @override
+  void initState() {
+    _initData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -205,29 +221,38 @@ class _HomeViewState extends State<HomeView> {
                     fontWeight: FontWeight.w500)),
             Expanded(
               child: ListView.builder(
-                  itemCount: 4,
+                  itemCount: info.length,
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
                         Container(
                           height: 170,
                           width: 200,
+                          padding: EdgeInsets.only(bottom: 5),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(15),
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/ex1.png")),
+                                  image: AssetImage(info[index]["img"])),
                               boxShadow: [
                                 BoxShadow(
                                     offset: Offset(5, 5),
                                     blurRadius: 3,
-                                    color: AppColor.gradientSecond.withOpacity(0.1)),
+                                    color: AppColor.gradientSecond
+                                        .withOpacity(0.1)),
                                 BoxShadow(
                                     offset: Offset(-5, -5),
                                     blurRadius: 3,
-                                    color: AppColor.gradientSecond.withOpacity(0.1))
+                                    color: AppColor.gradientSecond
+                                        .withOpacity(0.1))
                               ]),
-                          child: Center(child: ,),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(info[index]["title"],
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: AppColor.homeViewTitle)),
+                          ),
                         ),
                       ],
                     );
