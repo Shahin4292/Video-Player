@@ -203,6 +203,35 @@ class _HomeViewState extends State<HomeView> {
                     fontSize: 25,
                     color: AppColor.homeViewTitle,
                     fontWeight: FontWeight.w500)),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        Container(
+                          height: 170,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/images/ex1.png")),
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: Offset(5, 5),
+                                    blurRadius: 3,
+                                    color: AppColor.gradientSecond.withOpacity(0.1)),
+                                BoxShadow(
+                                    offset: Offset(-5, -5),
+                                    blurRadius: 3,
+                                    color: AppColor.gradientSecond.withOpacity(0.1))
+                              ]),
+                        ),
+                      ],
+                    );
+                  }),
+            )
           ],
         ),
       ),
