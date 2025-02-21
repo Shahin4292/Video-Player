@@ -227,6 +227,7 @@ class _HomeViewState extends State<HomeView> {
                                     blurRadius: 3,
                                     color: AppColor.gradientSecond.withOpacity(0.1))
                               ]),
+                          child: Center(child: ,),
                         ),
                       ],
                     );
