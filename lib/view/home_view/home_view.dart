@@ -16,6 +16,7 @@ class _HomeViewState extends State<HomeView> {
       body: Container(
         padding: EdgeInsets.only(top: 70, left: 30, right: 30),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 20,
           children: [
             Row(
@@ -193,10 +194,15 @@ class _HomeViewState extends State<HomeView> {
                             ]))
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
+            Text("Area of focus",
+                style: TextStyle(
+                    fontSize: 25,
+                    color: AppColor.homeViewTitle,
+                    fontWeight: FontWeight.w500)),
           ],
         ),
       ),
