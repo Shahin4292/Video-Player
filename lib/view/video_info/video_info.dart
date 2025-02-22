@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/res/color/colors.dart';
 
 class VideoInfo extends StatefulWidget {
@@ -9,6 +12,22 @@ class VideoInfo extends StatefulWidget {
 }
 
 class _VideoInfoState extends State<VideoInfo> {
+  List videoInfo = [];
+
+  _initData() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("json/videoinfo.json")
+        .then((value) {
+      videoInfo = json.decode(value);
+    });
+  }
+
+  @override
+  void initState() {
+    _initData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +50,13 @@ class _VideoInfoState extends State<VideoInfo> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.arrow_back_ios,
-                          size: 20, color: AppColor.secondViewIconColor),
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Icon(Icons.arrow_back_ios,
+                            size: 20, color: AppColor.secondViewIconColor),
+                      ),
                       Icon(Icons.info_outline,
                           size: 25, color: AppColor.secondViewIconColor),
                     ],
@@ -114,9 +138,70 @@ class _VideoInfoState extends State<VideoInfo> {
             Expanded(
                 child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                  color: Colors.white,
                   borderRadius:
                       BorderRadius.only(topRight: Radius.circular(70))),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 30, left: 30, top: 30),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Circuit 1: Legs Toning",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: AppColor.circuitsColor)),
+                        Row(
+                          spacing: 5,
+                          children: [
+                            Icon(Icons.loop,
+                                size: 20, color: AppColor.loopColor),
+                            Text("3 sec",
+                                style: TextStyle(
+                                    fontSize: 15, color: AppColor.setsColor)),
+                          ],
+                        )
+                      ],
+                    ),
+                    Expanded(
+                        child: ListView.builder(
+                            itemCount: videoInfo.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  debugPrint(index.toString());
+                                },
+                                child: Container(
+                                  height: 135,
+                                  width: 200,
+                                  color: Colors.redAccent,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            height: 80,
+                                            width: 80,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        videoInfo[index]
+                                                            ["thumbnail"]))),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }))
+                  ],
+                ),
+              ),
             ))
           ],
         ),
