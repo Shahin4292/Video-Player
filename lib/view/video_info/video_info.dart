@@ -26,7 +26,7 @@ class _VideoInfoState extends State<VideoInfo> {
               height: 300,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 30,
+                spacing: 40,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +110,14 @@ class _VideoInfoState extends State<VideoInfo> {
                   )
                 ],
               ),
-            )
+            ),
+            Expanded(
+                child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(70))),
+            ))
           ],
         ),
       ),

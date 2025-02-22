@@ -235,7 +235,7 @@ class _HomeViewState extends State<HomeView> {
                             Container(
                               height: 170,
                               width: (MediaQuery.sizeOf(context).width - 90) / 2,
-                              margin: EdgeInsets.only(left: 30,bottom: 15,top: 15),
+                              margin: EdgeInsets.only(left: 30,bottom: 15),
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -265,7 +265,7 @@ class _HomeViewState extends State<HomeView> {
                             Container(
                               height: 170,
                               width: (MediaQuery.sizeOf(context).width - 90) / 2,
-                              margin: EdgeInsets.only(left: 30,bottom: 15, top: 15),
+                              margin: EdgeInsets.only(left: 30,bottom: 15),
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(
                                   color: Colors.white,
