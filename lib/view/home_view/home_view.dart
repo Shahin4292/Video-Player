@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/res/color/colors.dart';
+import 'package:video_player/view/video_info/video_info.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -15,7 +17,9 @@ class _HomeViewState extends State<HomeView> {
 
   _initData() {
     DefaultAssetBundle.of(context).loadString("json/info.json").then((value) {
-      info = json.decode(value);
+      setState(() {
+        info = json.decode(value);
+      });
     });
   }
 
@@ -71,8 +75,13 @@ class _HomeViewState extends State<HomeView> {
                         color: AppColor.homeViewDetail,
                         fontWeight: FontWeight.w700)),
                 SizedBox(width: 8),
-                Icon(Icons.arrow_forward,
-                    size: 20, color: AppColor.homeViewIcons)
+                InkWell(
+                  onTap: () {
+                    Get.to(() => VideoInfo());
+                  },
+                  child: Icon(Icons.arrow_forward,
+                      size: 20, color: AppColor.homeViewIcons),
+                )
               ],
             ),
             Container(
@@ -234,8 +243,9 @@ class _HomeViewState extends State<HomeView> {
                           children: [
                             Container(
                               height: 170,
-                              width: (MediaQuery.sizeOf(context).width - 90) / 2,
-                              margin: EdgeInsets.only(left: 30,bottom: 15),
+                              width:
+                                  (MediaQuery.sizeOf(context).width - 90) / 2,
+                              margin: EdgeInsets.only(left: 30, bottom: 15),
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -264,8 +274,9 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             Container(
                               height: 170,
-                              width: (MediaQuery.sizeOf(context).width - 90) / 2,
-                              margin: EdgeInsets.only(left: 30,bottom: 15),
+                              width:
+                                  (MediaQuery.sizeOf(context).width - 90) / 2,
+                              margin: EdgeInsets.only(left: 30, bottom: 15),
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(
                                   color: Colors.white,
