@@ -144,6 +144,7 @@ class _VideoInfoState extends State<VideoInfo> {
               child: Padding(
                 padding: const EdgeInsets.only(right: 30, left: 30, top: 30),
                 child: Column(
+                  spacing: 10,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,11 +176,11 @@ class _VideoInfoState extends State<VideoInfo> {
                                 },
                                 child: Container(
                                   height: 135,
-                                  width: 200,
-                                  color: Colors.redAccent,
                                   child: Column(
+                                    spacing: 16,
                                     children: [
                                       Row(
+                                        spacing: 10,
                                         children: [
                                           Container(
                                             height: 80,
@@ -190,7 +191,72 @@ class _VideoInfoState extends State<VideoInfo> {
                                                 image: DecorationImage(
                                                     image: AssetImage(
                                                         videoInfo[index]
-                                                            ["thumbnail"]))),
+                                                            ["thumbnail"]),
+                                                    fit: BoxFit.cover)),
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            spacing: 10,
+                                            children: [
+                                              Text(
+                                                videoInfo[index]["title"],
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18),
+                                              ),
+                                              Text(
+                                                videoInfo[index]["time"],
+                                                style: TextStyle(
+                                                    color: Colors.grey[500]),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: 80,
+                                            height: 20,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xFFeaeefc),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            child: Center(
+                                              child: Text("15s rest",
+                                                  style: TextStyle(
+                                                      color:
+                                                          Color(0xFF839fed))),
+                                            ),
+                                          ),
+                                          SizedBox(width: 3),
+                                          Row(
+                                            children: [
+                                              for (int i = 0; i < 70; i++)
+                                                i.isEven
+                                                    ? Container(
+                                                        width: 3,
+                                                        height: 1,
+                                                        decoration: BoxDecoration(
+                                                            color: Color(
+                                                                0xFF839fed),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2)))
+                                                    : Container(
+                                                        width: 3,
+                                                        height: 1,
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2)))
+                                            ],
                                           )
                                         ],
                                       )
