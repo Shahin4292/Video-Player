@@ -21,17 +21,39 @@ class _VideoInfoState extends State<VideoInfo> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 70,left: 30,right: 30),
+              padding: EdgeInsets.only(top: 70, left: 30, right: 30),
               width: MediaQuery.sizeOf(context).width,
               height: 300,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 30,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.arrow_back_ios, size: 25, color: AppColor.secondViewIconColor),
+                      Icon(Icons.arrow_back_ios,
+                          size: 20, color: AppColor.secondViewIconColor),
                       Icon(Icons.info_outline,
                           size: 25, color: AppColor.secondViewIconColor),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Legs Toning",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: AppColor.secondViewTitleColor,
+                              fontWeight: FontWeight.w600)),
+                      Text("and Glutes Workout",
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: AppColor.secondViewTitleColor)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container()
                     ],
                   )
                 ],
