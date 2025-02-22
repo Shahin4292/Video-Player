@@ -52,8 +52,60 @@ class _VideoInfoState extends State<VideoInfo> {
                     ],
                   ),
                   Row(
+                    spacing: 20,
                     children: [
-                      Container()
+                      Container(
+                        width: 98,
+                        height: 30,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                                colors: [
+                                  AppColor.secondViewContainerGradient1stColor,
+                                  AppColor.secondViewContainerGradient2ndColor
+                                ],
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight)),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 5,
+                          children: [
+                            Icon(Icons.timer_outlined,
+                                color: AppColor.secondViewIconColor, size: 20),
+                            Text("68 min",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColor.secondViewIconColor)),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 230,
+                        height: 30,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                                colors: [
+                                  AppColor.secondViewContainerGradient1stColor,
+                                  AppColor.secondViewContainerGradient2ndColor
+                                ],
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight)),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 5,
+                          children: [
+                            Icon(Icons.handyman_outlined,
+                                color: AppColor.secondViewIconColor, size: 20),
+                            Text("Resistent band, kettebell",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColor.secondViewIconColor)),
+                          ],
+                        ),
+                      ),
                     ],
                   )
                 ],
