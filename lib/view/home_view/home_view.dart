@@ -222,76 +222,80 @@ class _HomeViewState extends State<HomeView> {
             Expanded(
               child: OverflowBox(
                 maxWidth: MediaQuery.sizeOf(context).width,
-                child: ListView.builder(
-                    itemCount: (info.length.toDouble() / 2).toInt(),
-                    itemBuilder: (context, index) {
-                      int a = 2 * index;
-                      int b = 2 * index + 1;
-                      return Row(
-                        children: [
-                          Container(
-                            height: 170,
-                            width: (MediaQuery.sizeOf(context).width - 90) / 2,
-                            margin: EdgeInsets.only(left: 30,bottom: 15),
-                            padding: EdgeInsets.only(bottom: 5),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                    image: AssetImage(info[a]["img"])),
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(5, 5),
-                                      blurRadius: 3,
-                                      color: AppColor.gradientSecond
-                                          .withOpacity(0.1)),
-                                  BoxShadow(
-                                      offset: Offset(-5, -5),
-                                      blurRadius: 3,
-                                      color: AppColor.gradientSecond
-                                          .withOpacity(0.1))
-                                ]),
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(info[a]["title"],
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: AppColor.homeViewTitle)),
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: ListView.builder(
+                      itemCount: (info.length.toDouble() / 2).toInt(),
+                      itemBuilder: (context, index) {
+                        int a = 2 * index;
+                        int b = 2 * index + 1;
+                        return Row(
+                          children: [
+                            Container(
+                              height: 170,
+                              width: (MediaQuery.sizeOf(context).width - 90) / 2,
+                              margin: EdgeInsets.only(left: 30,bottom: 15,top: 15),
+                              padding: EdgeInsets.only(bottom: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                      image: AssetImage(info[a]["img"])),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        offset: Offset(5, 5),
+                                        blurRadius: 3,
+                                        color: AppColor.gradientSecond
+                                            .withOpacity(0.1)),
+                                    BoxShadow(
+                                        offset: Offset(-5, -5),
+                                        blurRadius: 3,
+                                        color: AppColor.gradientSecond
+                                            .withOpacity(0.1))
+                                  ]),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(info[a]["title"],
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: AppColor.homeViewTitle)),
+                              ),
                             ),
-                          ),
-                          Container(
-                            height: 170,
-                            width: (MediaQuery.sizeOf(context).width - 90) / 2,
-                            margin: EdgeInsets.only(left: 30,bottom: 15),
-                            padding: EdgeInsets.only(bottom: 5),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                    image: AssetImage(info[b]["img"])),
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(5, 5),
-                                      blurRadius: 3,
-                                      color: AppColor.gradientSecond
-                                          .withOpacity(0.1)),
-                                  BoxShadow(
-                                      offset: Offset(-5, -5),
-                                      blurRadius: 3,
-                                      color: AppColor.gradientSecond
-                                          .withOpacity(0.1))
-                                ]),
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(info[b]["title"],
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: AppColor.homeViewTitle)),
+                            Container(
+                              height: 170,
+                              width: (MediaQuery.sizeOf(context).width - 90) / 2,
+                              margin: EdgeInsets.only(left: 30,bottom: 15, top: 15),
+                              padding: EdgeInsets.only(bottom: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                      image: AssetImage(info[b]["img"])),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        offset: Offset(5, 5),
+                                        blurRadius: 3,
+                                        color: AppColor.gradientSecond
+                                            .withOpacity(0.1)),
+                                    BoxShadow(
+                                        offset: Offset(-5, -5),
+                                        blurRadius: 3,
+                                        color: AppColor.gradientSecond
+                                            .withOpacity(0.1))
+                                  ]),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(info[b]["title"],
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: AppColor.homeViewTitle)),
+                              ),
                             ),
-                          ),
-                        ],
-                      );
-                    }),
+                          ],
+                        );
+                      }),
+                ),
               ),
             )
           ],
