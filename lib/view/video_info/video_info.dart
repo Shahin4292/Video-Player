@@ -15,6 +15,7 @@ class VideoInfo extends StatefulWidget {
 
 class _VideoInfoState extends State<VideoInfo> {
   List videoInfo = [];
+  bool _isPlaying = false;
   bool _playArea = false;
   VideoPlayerController? _controller;
 
@@ -179,6 +180,7 @@ class _VideoInfoState extends State<VideoInfo> {
                           ),
                         ),
                         _playView(context),
+                        _controlView(context),
                       ],
                     )),
               // _playView(context),
@@ -215,7 +217,30 @@ class _VideoInfoState extends State<VideoInfo> {
             ])));
   }
 
-  _playView(BuildContext context) {
+  Widget _controlView(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextButton(
+            onPressed: () async {},
+            child: Icon(Icons.fast_rewind, size: 36, color: Colors.white)),
+        TextButton(
+            onPressed: () async {
+              if (_isPlaying) {
+                _controller?.pause();
+              } else {
+                _controller?.play();
+              }
+            },
+            child: Icon(Icons.play_arrow, size: 36, color: Colors.white)),
+        TextButton(
+            onPressed: () async {},
+            child: Icon(Icons.fast_forward, size: 36, color: Colors.white))
+      ],
+    );
+  }
+
+  Widget _playView(BuildContext context) {
     final controller = _controller;
     if (controller != null && controller.value.isInitialized) {
       return AspectRatio(
@@ -232,13 +257,25 @@ class _VideoInfoState extends State<VideoInfo> {
           )));
     }
   }
-
-  _onTapVideo(int index) {
+  void _onControllerUpdate()async{
+    final controller = _controller;
+    if(controller == null){
+      debugPrint("Controller is null");
+      return;
+    }if(!controller.value.isInitialized){
+      debugPrint("Controller not initialize");
+      return;
+    }
+    final playing = controller.value.isPlaying;
+    _isPlaying = playing;
+  }
+  _initializeVideo(int index) {
     final controller =
         VideoPlayerController.network(videoInfo[index]["videoUrl"]);
     _controller = controller;
     setState(() {});
     controller.initialize().then((_) {
+      controller.addListener(_onControllerUpdate);
       controller.play();
       setState(() {});
     });
@@ -250,7 +287,7 @@ class _VideoInfoState extends State<VideoInfo> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              _onTapVideo(index);
+              _initializeVideo(index);
               debugPrint(index.toString());
               setState(() {
                 if (_playArea == false) {
