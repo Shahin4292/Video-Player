@@ -17,6 +17,7 @@ class _VideoInfoState extends State<VideoInfo> {
   List videoInfo = [];
   bool _isPlaying = false;
   bool _playArea = false;
+  bool _disposed = false;
   VideoPlayerController? _controller;
 
   _initData() async {
@@ -33,6 +34,15 @@ class _VideoInfoState extends State<VideoInfo> {
   void initState() {
     _initData();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    _controller?.pause();
+    _controller?.dispose();
+    _controller = null;
+    super.dispose();
   }
 
   @override
@@ -218,25 +228,37 @@ class _VideoInfoState extends State<VideoInfo> {
   }
 
   Widget _controlView(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextButton(
-            onPressed: () async {},
-            child: Icon(Icons.fast_rewind, size: 36, color: Colors.white)),
-        TextButton(
-            onPressed: () async {
-              if (_isPlaying) {
-                _controller?.pause();
-              } else {
-                _controller?.play();
-              }
-            },
-            child: Icon(Icons.play_arrow, size: 36, color: Colors.white)),
-        TextButton(
-            onPressed: () async {},
-            child: Icon(Icons.fast_forward, size: 36, color: Colors.white))
-      ],
+    return Container(
+      height: 120,
+      width: MediaQuery.sizeOf(context).width,
+      color: AppColor.gradientSecond,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+              onPressed: () async {},
+              child: Icon(Icons.fast_rewind, size: 36, color: Colors.white)),
+          TextButton(
+              onPressed: () async {
+                if (_isPlaying) {
+                  setState(() {
+                    _isPlaying = false;
+                  });
+                  _controller?.pause();
+                } else {
+                  setState(() {
+                    _isPlaying = true;
+                  });
+                  _controller?.play();
+                }
+              },
+              child: Icon(_isPlaying ? Icons.pause : Icons.play_arrow,
+                  size: 36, color: Colors.white)),
+          TextButton(
+              onPressed: () async {},
+              child: Icon(Icons.fast_forward, size: 36, color: Colors.white))
+        ],
+      ),
     );
   }
 
@@ -257,24 +279,36 @@ class _VideoInfoState extends State<VideoInfo> {
           )));
     }
   }
-  void _onControllerUpdate()async{
+
+  void _onControllerUpdate() async {
+    if(_disposed){
+      return;
+    }
     final controller = _controller;
-    if(controller == null){
+    if (controller == null) {
       debugPrint("Controller is null");
       return;
-    }if(!controller.value.isInitialized){
+    }
+    if (!controller.value.isInitialized) {
       debugPrint("Controller not initialize");
       return;
     }
     final playing = controller.value.isPlaying;
     _isPlaying = playing;
   }
+
   _initializeVideo(int index) {
     final controller =
         VideoPlayerController.network(videoInfo[index]["videoUrl"]);
+    final old = _controller;
+    if (old != null) {
+      old.removeListener(_onControllerUpdate);
+      old.pause();
+    }
     _controller = controller;
     setState(() {});
     controller.initialize().then((_) {
+      old?.dispose();
       controller.addListener(_onControllerUpdate);
       controller.play();
       setState(() {});
