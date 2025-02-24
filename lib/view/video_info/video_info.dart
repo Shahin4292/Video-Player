@@ -178,7 +178,7 @@ class _VideoInfoState extends State<VideoInfo> {
                             ],
                           ),
                         ),
-                        // _playView(context),
+                        _playView(context),
                       ],
                     )),
               // _playView(context),
@@ -215,8 +215,19 @@ class _VideoInfoState extends State<VideoInfo> {
             ])));
   }
 
-  // _playView(BuildContext context) {}
-  //
+  _playView(BuildContext context) {
+    final controller = _controller;
+    if (controller != null && controller.value.isInitialized) {
+      return Container(
+        height: 300,
+        width: 300,
+        child: VideoPlayer(controller),
+      );
+    } else {
+      return Text("Please Wait");
+    }
+  }
+
   _onTapVideo(int index) {
     final controller =
         VideoPlayerController.network(videoInfo[index]["videoUrl"]);
@@ -224,9 +235,7 @@ class _VideoInfoState extends State<VideoInfo> {
     setState(() {});
     controller.initialize().then((_) {
       controller.play();
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 
