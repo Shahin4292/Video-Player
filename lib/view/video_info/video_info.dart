@@ -16,7 +16,7 @@ class VideoInfo extends StatefulWidget {
 class _VideoInfoState extends State<VideoInfo> {
   List videoInfo = [];
   bool _playArea = false;
-  late VideoPlayerController _controller;
+  VideoPlayerController? _controller;
 
   _initData() async {
     await DefaultAssetBundle.of(context)
@@ -218,13 +218,18 @@ class _VideoInfoState extends State<VideoInfo> {
   _playView(BuildContext context) {
     final controller = _controller;
     if (controller != null && controller.value.isInitialized) {
-      return Container(
-        height: 300,
-        width: 300,
+      return AspectRatio(
+        aspectRatio: 16 / 9,
         child: VideoPlayer(controller),
       );
     } else {
-      return Text("Please Wait");
+      return AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Center(
+              child: Text(
+            "Please Wait....",
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          )));
     }
   }
 
