@@ -18,6 +18,7 @@ class _VideoInfoState extends State<VideoInfo> {
   bool _isPlaying = false;
   bool _playArea = false;
   bool _disposed = false;
+  int _isPlayingIndex = -1;
   VideoPlayerController? _controller;
 
   _initData() async {
@@ -236,7 +237,14 @@ class _VideoInfoState extends State<VideoInfo> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextButton(
-              onPressed: () async {},
+              onPressed: () async {
+                final index = _isPlayingIndex - 1;
+                if (index > 0 && videoInfo.length >= 0) {
+                  _initializeVideo(index);
+                } else {
+                  Get.snackbar("Video", "No more video to play");
+                }
+              },
               child: Icon(Icons.fast_rewind, size: 36, color: Colors.white)),
           TextButton(
               onPressed: () async {
@@ -255,7 +263,14 @@ class _VideoInfoState extends State<VideoInfo> {
               child: Icon(_isPlaying ? Icons.pause : Icons.play_arrow,
                   size: 36, color: Colors.white)),
           TextButton(
-              onPressed: () async {},
+              onPressed: () async {
+                final index = _isPlayingIndex + 1;
+                if (index <= videoInfo.length - 1) {
+                  _initializeVideo(index);
+                } else {
+                  Get.snackbar("Video", "No more video to play");
+                }
+              },
               child: Icon(Icons.fast_forward, size: 36, color: Colors.white))
         ],
       ),
@@ -280,10 +295,18 @@ class _VideoInfoState extends State<VideoInfo> {
     }
   }
 
+  var _onUpdateControllerTime;
+
   void _onControllerUpdate() async {
-    if(_disposed){
+    if (_disposed) {
       return;
     }
+    _onUpdateControllerTime = 0;
+    final now = DateTime.now().millisecondsSinceEpoch;
+    if (_onUpdateControllerTime > now) {
+      return;
+    }
+    _onUpdateControllerTime = now + 500;
     final controller = _controller;
     if (controller == null) {
       debugPrint("Controller is null");
@@ -309,6 +332,7 @@ class _VideoInfoState extends State<VideoInfo> {
     setState(() {});
     controller.initialize().then((_) {
       old?.dispose();
+      _isPlayingIndex = index;
       controller.addListener(_onControllerUpdate);
       controller.play();
       setState(() {});
