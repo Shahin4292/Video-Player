@@ -142,18 +142,23 @@ class _HomeViewState extends State<HomeView> {
                                           AppColor.homeViewContainerTextSmall)),
                             ],
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: AppColor.gradientFirst,
-                                      blurRadius: 10,
-                                      offset: Offset(4, 8))
-                                ]),
-                            child: Icon(Icons.play_circle_fill,
-                                color: AppColor.homeViewContainerTextSmall,
-                                size: 60),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(() => VideoInfo());
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(60),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: AppColor.gradientFirst,
+                                        blurRadius: 10,
+                                        offset: Offset(4, 8))
+                                  ]),
+                              child: Icon(Icons.play_circle_fill,
+                                  color: AppColor.homeViewContainerTextSmall,
+                                  size: 60),
+                            ),
                           )
                         ],
                       )
@@ -164,64 +169,70 @@ class _HomeViewState extends State<HomeView> {
               height: 180,
               // color: Colors.red,
               width: MediaQuery.sizeOf(context).width,
-              child: Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    margin: EdgeInsets.only(top: 30),
-                    height: 120,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 40,
-                              offset: Offset(8, 10),
-                              color: AppColor.gradientSecond.withOpacity(0.3)),
-                          BoxShadow(
-                              blurRadius: 10,
-                              offset: Offset(-1, -5),
-                              color: AppColor.gradientSecond.withOpacity(0.3))
-                        ],
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/card.jpg"),
-                            fit: BoxFit.fill)),
-                  ),
-                  Container(
-                    height: 200,
-                    width: MediaQuery.sizeOf(context).width,
-                    margin: EdgeInsets.only(right: 200, bottom: 30),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/figure.png"))),
-                  ),
-                  Container(
-                    height: 100,
-                    width: double.maxFinite,
-                    margin: EdgeInsets.only(left: 150, top: 50),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: 4,
-                      children: [
-                        Text("You are doing well",
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: AppColor.homeViewDetail,
-                                fontWeight: FontWeight.bold)),
-                        RichText(
-                            text: TextSpan(
-                                text: "Keep it up\n",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppColor.homeViewPlanColor,
-                                ),
-                                children: [
-                              TextSpan(text: "stick to your plan")
-                            ]))
-                      ],
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => VideoInfo());
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      width: MediaQuery.sizeOf(context).width,
+                      margin: EdgeInsets.only(top: 30),
+                      height: 120,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 40,
+                                offset: Offset(8, 10),
+                                color:
+                                    AppColor.gradientSecond.withOpacity(0.3)),
+                            BoxShadow(
+                                blurRadius: 10,
+                                offset: Offset(-1, -5),
+                                color: AppColor.gradientSecond.withOpacity(0.3))
+                          ],
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/card.jpg"),
+                              fit: BoxFit.fill)),
                     ),
-                  ),
-                ],
+                    Container(
+                      height: 200,
+                      width: MediaQuery.sizeOf(context).width,
+                      margin: EdgeInsets.only(right: 200, bottom: 30),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/figure.png"))),
+                    ),
+                    Container(
+                      height: 100,
+                      width: double.maxFinite,
+                      margin: EdgeInsets.only(left: 150, top: 50),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 4,
+                        children: [
+                          Text("You are doing well",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: AppColor.homeViewDetail,
+                                  fontWeight: FontWeight.bold)),
+                          RichText(
+                              text: TextSpan(
+                                  text: "Keep it up\n",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColor.homeViewPlanColor,
+                                  ),
+                                  children: [
+                                TextSpan(text: "stick to your plan")
+                              ]))
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Text("Area of focus",

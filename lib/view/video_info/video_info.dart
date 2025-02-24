@@ -180,7 +180,9 @@ class _VideoInfoState extends State<VideoInfo> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.back();
+                                },
                                 child: Icon(Icons.arrow_back_ios,
                                     size: 20,
                                     color: AppColor.secondViewIconColor),
