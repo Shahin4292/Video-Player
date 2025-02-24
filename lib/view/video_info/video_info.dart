@@ -52,162 +52,164 @@ class _VideoInfoState extends State<VideoInfo> {
         body: Container(
             decoration: _playArea == false
                 ? BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [
-                        AppColor.gradientFirst.withOpacity(0.9),
-                        AppColor.gradientSecond
-                      ],
-                        begin: FractionalOffset(8.8, 0.4),
-                        end: Alignment.topRight))
+                gradient: LinearGradient(
+                    colors: [
+                      AppColor.gradientFirst.withOpacity(0.9),
+                      AppColor.gradientSecond
+                    ],
+                    begin: FractionalOffset(8.8, 0.4),
+                    end: Alignment.topRight))
                 : BoxDecoration(color: AppColor.gradientSecond),
             child: Column(children: [
               _playArea == false
                   ? Container(
-                      padding: EdgeInsets.only(top: 70, left: 30, right: 30),
-                      width: MediaQuery.sizeOf(context).width,
-                      height: 300,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 40,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Icon(Icons.arrow_back_ios,
-                                    size: 20,
-                                    color: AppColor.secondViewIconColor),
-                              ),
-                              Icon(Icons.info_outline,
-                                  size: 25,
-                                  color: AppColor.secondViewIconColor),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Legs Toning",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: AppColor.secondViewTitleColor,
-                                      fontWeight: FontWeight.w600)),
-                              Text("and Glutes Workout",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      color: AppColor.secondViewTitleColor)),
-                            ],
-                          ),
-                          Row(
-                            spacing: 20,
-                            children: [
-                              Container(
-                                width: 98,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          AppColor
-                                              .secondViewContainerGradient1stColor,
-                                          AppColor
-                                              .secondViewContainerGradient2ndColor
-                                        ],
-                                        begin: Alignment.bottomLeft,
-                                        end: Alignment.topRight)),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  spacing: 5,
-                                  children: [
-                                    Icon(Icons.timer_outlined,
-                                        color: AppColor.secondViewIconColor,
-                                        size: 20),
-                                    Text("68 min",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color:
-                                                AppColor.secondViewIconColor)),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: 230,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          AppColor
-                                              .secondViewContainerGradient1stColor,
-                                          AppColor
-                                              .secondViewContainerGradient2ndColor
-                                        ],
-                                        begin: Alignment.bottomLeft,
-                                        end: Alignment.topRight)),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  spacing: 5,
-                                  children: [
-                                    Icon(Icons.handyman_outlined,
-                                        color: AppColor.secondViewIconColor,
-                                        size: 20),
-                                    Text("Resistent band, kettebell",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color:
-                                                AppColor.secondViewIconColor)),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  : Container(
-                      child: Column(
+                padding: EdgeInsets.only(top: 70, left: 30, right: 30),
+                width: MediaQuery
+                    .sizeOf(context)
+                    .width,
+                height: 300,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 40,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Icon(Icons.arrow_back_ios,
+                              size: 20,
+                              color: AppColor.secondViewIconColor),
+                        ),
+                        Icon(Icons.info_outline,
+                            size: 25,
+                            color: AppColor.secondViewIconColor),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Legs Toning",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: AppColor.secondViewTitleColor,
+                                fontWeight: FontWeight.w600)),
+                        Text("and Glutes Workout",
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: AppColor.secondViewTitleColor)),
+                      ],
+                    ),
+                    Row(
+                      spacing: 20,
                       children: [
                         Container(
-                          height: 100,
-                          padding:
-                              EdgeInsets.only(top: 50, left: 30, right: 30),
+                          width: 98,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(
+                                  colors: [
+                                    AppColor
+                                        .secondViewContainerGradient1stColor,
+                                    AppColor
+                                        .secondViewContainerGradient2ndColor
+                                  ],
+                                  begin: Alignment.bottomLeft,
+                                  end: Alignment.topRight)),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: 5,
                             children: [
-                              InkWell(
-                                onTap: () {},
-                                child: Icon(Icons.arrow_back_ios,
-                                    size: 20,
-                                    color: AppColor.secondViewIconColor),
-                              ),
-                              Icon(Icons.info_outline,
-                                  size: 20,
-                                  color: AppColor.secondViewIconColor),
+                              Icon(Icons.timer_outlined,
+                                  color: AppColor.secondViewIconColor,
+                                  size: 20),
+                              Text("68 min",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color:
+                                      AppColor.secondViewIconColor)),
                             ],
                           ),
                         ),
-                        _playView(context),
-                        _controlView(context),
+                        Container(
+                          width: 230,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(
+                                  colors: [
+                                    AppColor
+                                        .secondViewContainerGradient1stColor,
+                                    AppColor
+                                        .secondViewContainerGradient2ndColor
+                                  ],
+                                  begin: Alignment.bottomLeft,
+                                  end: Alignment.topRight)),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: 5,
+                            children: [
+                              Icon(Icons.handyman_outlined,
+                                  color: AppColor.secondViewIconColor,
+                                  size: 20),
+                              Text("Resistent band, kettebell",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color:
+                                      AppColor.secondViewIconColor)),
+                            ],
+                          ),
+                        ),
                       ],
-                    )),
+                    )
+                  ],
+                ),
+              )
+                  : Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        padding:
+                        EdgeInsets.only(top: 50, left: 30, right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Icon(Icons.arrow_back_ios,
+                                  size: 20,
+                                  color: AppColor.secondViewIconColor),
+                            ),
+                            Icon(Icons.info_outline,
+                                size: 20,
+                                color: AppColor.secondViewIconColor),
+                          ],
+                        ),
+                      ),
+                      _playView(context),
+                      _controlView(context),
+                    ],
+                  )),
               // _playView(context),
               Expanded(
                   child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                              BorderRadius.only(topRight: Radius.circular(70))),
+                          BorderRadius.only(topRight: Radius.circular(70))),
                       child: Padding(
                           padding: const EdgeInsets.only(
                               right: 30, left: 30, top: 30),
                           child: Column(spacing: 10, children: [
                             Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Circuit 1: Legs Toning",
                                       style: TextStyle(
@@ -229,13 +231,42 @@ class _VideoInfoState extends State<VideoInfo> {
   }
 
   Widget _controlView(BuildContext context) {
+    final noMute = (_controller?.value?.volume??0)>0;
     return Container(
       height: 120,
-      width: MediaQuery.sizeOf(context).width,
+      width: MediaQuery
+          .sizeOf(context)
+          .width,
       color: AppColor.gradientSecond,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          InkWell(
+            onTap: (){
+              if(noMute){
+                _controller?.setVolume(0);
+              }else{
+                _controller?.setVolume(1.0);
+              }
+              setState(() {
+
+              });
+            },
+            child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 4.0,
+                    color: Color.fromARGB(50, 0, 0, 0)
+                  )
+                ]
+              ),
+              child: Icon(Icons.volume_up,color: Colors.white,size: 30),
+            )),
+          ),
           TextButton(
               onPressed: () async {
                 final index = _isPlayingIndex - 1;
@@ -247,7 +278,7 @@ class _VideoInfoState extends State<VideoInfo> {
                       icon: Icon(Icons.face, size: 30, color: Colors.white),
                       backgroundColor: AppColor.gradientSecond,
                       colorText: Colors.white,
-                      messageText: Text("No more video ahead",
+                      messageText: Text("No more video ahead!",
                           style: TextStyle(color: Colors.white, fontSize: 20)));
                 }
               },
@@ -279,7 +310,7 @@ class _VideoInfoState extends State<VideoInfo> {
                       icon: Icon(Icons.face, size: 30, color: Colors.white),
                       backgroundColor: AppColor.gradientSecond,
                       colorText: Colors.white,
-                      messageText: Text("No more video in the list",
+                      messageText: Text("you have finished the all video!",
                           style: TextStyle(color: Colors.white, fontSize: 20)));
                 }
               },
@@ -301,9 +332,9 @@ class _VideoInfoState extends State<VideoInfo> {
           aspectRatio: 16 / 9,
           child: Center(
               child: Text(
-            "Please Wait....",
-            style: TextStyle(fontSize: 20, color: Colors.white),
-          )));
+                "Please Wait....",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              )));
     }
   }
 
@@ -314,7 +345,9 @@ class _VideoInfoState extends State<VideoInfo> {
       return;
     }
     _onUpdateControllerTime = 0;
-    final now = DateTime.now().millisecondsSinceEpoch;
+    final now = DateTime
+        .now()
+        .millisecondsSinceEpoch;
     if (_onUpdateControllerTime > now) {
       return;
     }
@@ -334,7 +367,7 @@ class _VideoInfoState extends State<VideoInfo> {
 
   _initializeVideo(int index) {
     final controller =
-        VideoPlayerController.network(videoInfo[index]["videoUrl"]);
+    VideoPlayerController.network(videoInfo[index]["videoUrl"]);
     final old = _controller;
     if (old != null) {
       old.removeListener(_onControllerUpdate);
@@ -424,17 +457,17 @@ class _VideoInfoState extends State<VideoInfo> {
                   for (int i = 0; i < 70; i++)
                     i.isEven
                         ? Container(
-                            width: 3,
-                            height: 1,
-                            decoration: BoxDecoration(
-                                color: Color(0xFF839fed),
-                                borderRadius: BorderRadius.circular(2)))
+                        width: 3,
+                        height: 1,
+                        decoration: BoxDecoration(
+                            color: Color(0xFF839fed),
+                            borderRadius: BorderRadius.circular(2)))
                         : Container(
-                            width: 3,
-                            height: 1,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(2)))
+                        width: 3,
+                        height: 1,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(2)))
                 ],
               )
             ],
